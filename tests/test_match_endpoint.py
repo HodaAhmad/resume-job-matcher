@@ -7,11 +7,11 @@ client = TestClient(app)
 
 def test_match_endpoint_returns_expected_shape():
     payload = {
-    "resume_text": "Python developer with FastAPI, SQL, and Docker experience.",
-    "job_description": (
-        "Looking for a Python backend engineer with FastAPI and SQL."
-    ),
-}
+        "resume_text": "Python developer with FastAPI, SQL, and Docker experience.",
+        "job_description": (
+            "Looking for a Python backend engineer with FastAPI and SQL."
+        ),
+    }
 
     response = client.post("/match", json=payload)
 
