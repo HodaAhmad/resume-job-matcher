@@ -1,4 +1,5 @@
 from sentence_transformers import SentenceTransformer, util
+
 from app.services.extractor import extract_skills
 
 _model = None
@@ -41,7 +42,9 @@ def match_resume_to_jd(resume_text: str, jd_text: str) -> dict:
     resume_embedding = model.encode(resume_text, convert_to_tensor=True)
     jd_embedding = model.encode(jd_text, convert_to_tensor=True)
 
-    semantic_similarity = float(util.cos_sim(resume_embedding, jd_embedding).item()) * 100
+    semantic_similarity = (
+        float(util.cos_sim(resume_embedding, jd_embedding).item()) * 100
+    )
 
     if jd_skills:
         skill_overlap = (len(matched_skills) / len(jd_skills)) * 100
